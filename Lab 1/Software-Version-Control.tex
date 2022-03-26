@@ -1,0 +1,315 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  man]{apa7}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Software Version Control},
+  pdfauthor={Rushabh Barbhaya1},
+  pdflang={en-EN},
+  pdfkeywords={Version Control System, Version Control, Revision Control System, Concurrent Version System, Git, GitHub, GitLab, Bitbucket, CVS, VCS, RCS},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{english}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+% Manuscript styling
+\usepackage{upgreek}
+\captionsetup{font=singlespacing,justification=justified}
+
+% Table formatting
+\usepackage{longtable}
+\usepackage{lscape}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\centering\begin{threeparttable}}
+%   {\end{threeparttable}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\centering\begin{ThreePartTable}}{\end{ThreePartTable}\end{landscape}}
+
+% Enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+
+% \setlength{\parindent}{0.5in}
+% \setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+% Overwrite redefinition of paragraph and subparagraph by the default LaTeX template
+% See https://github.com/crsh/papaja/issues/292
+\makeatletter
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries\itshape\typesectitle}}
+
+\renewcommand{\subparagraph}[1]{\@startsection{subparagraph}{5}{1em}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-\z@\relax}%
+  {\normalfont\normalsize\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
+\makeatother
+
+% \usepackage{etoolbox}
+\makeatletter
+\patchcmd{\HyOrg@maketitle}
+  {\section{\normalfont\normalsize\abstractname}}
+  {\section*{\normalfont\normalsize\abstractname}}
+  {}{\typeout{Failed to patch abstract.}}
+\patchcmd{\HyOrg@maketitle}
+  {\section{\protect\normalfont{\@title}}}
+  {\section*{\protect\normalfont{\@title}}}
+  {}{\typeout{Failed to patch title.}}
+\makeatother
+
+\usepackage{xpatch}
+\makeatletter
+\xapptocmd\appendix
+  {\xapptocmd\section
+    {\addcontentsline{toc}{section}{\appendixname\ifoneappendix\else~\theappendix\fi\\: #1}}
+    {}{\InnerPatchFailed}%
+  }
+{}{\PatchFailed}
+\keywords{Version Control System, Version Control, Revision Control System, Concurrent Version System, Git, GitHub, GitLab, Bitbucket, CVS, VCS, RCS\newline\indent Word count: X}
+\DeclareDelayedFloatFlavor{ThreePartTable}{table}
+\DeclareDelayedFloatFlavor{lltable}{table}
+\DeclareDelayedFloatFlavor*{longtable}{table}
+\makeatletter
+\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
+\makeatother
+\usepackage{lineno}
+
+\linenumbers
+\usepackage{csquotes}
+\usepackage[titles]{tocloft}
+\cftpagenumbersoff{figure}
+\renewcommand{\cftfigpresnum}{\itshape\figurename\enspace}
+\renewcommand{\cftfigaftersnum}{.\space}
+\setlength{\cftfigindent}{0pt}
+\setlength{\cftafterloftitleskip}{0pt}
+\settowidth{\cftfignumwidth}{Figure 10.\qquad}
+\makeatletter
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries\typesectitle}}
+
+\renewcommand{\subparagraph}[1]{\@startsection{subparagraph}{5}{1em}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-\z@\relax}%
+  {\normalfont\normalsize\bfseries\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
+\makeatother
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Software Version Control}
+\author{Rushabh Barbhaya\textsuperscript{1}}
+\date{}
+
+
+\shorttitle{Version Control}
+
+\authornote{
+
+This paper is just written towards the assignment submittion for Harrisburg University of Science and Technology's Master of Analytics course. Although the author has used genuine sources and cited real peer reviewed reasearch. This research itself is not peer reviewed and should therefore not be used for technical or scientific research.
+
+The authors made the following contributions. Rushabh Barbhaya: Conceptualization, Writing - Original Draft Preparation, Writing - Review \& Editing.
+
+Correspondence concerning this article should be addressed to Rushabh Barbhaya, 326 Market St, Harrisburg, PA 17101. E-mail: \href{mailto:RBarbhaya@my.harrisburgu.edu}{\nolinkurl{RBarbhaya@my.harrisburgu.edu}}
+
+}
+
+\affiliation{\vspace{0.5cm}\textsuperscript{1} Harrisburg University of Science and Technology}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Version Control System (VCS) is an integral part of a software developer's job experience. From the author's personal experience and Spinellis (2005), we know that programmers do not write production code without the use of an editor, interpreter, or compiler. If the programmers use the production code with version control at this time, they risk the feature update to break the whole platform without having a backup to roll back on.
+
+Software version control is an extension to a human's typical behavior not to be able to envision the future says Spinellis (2005). A version control system gives reliable tools to rely upon and build better programs.
+
+There are two types of version control as explained by O'Sullivan (2009), 1. Concurrent Version System (CVS) and 2. Revision Control System (RCS). The concurrent version system is a legacy system that was slowly phased out in favor of the recurrent version system. CVS used to follow the server-client model. A central server hosted the project code or the source code. The clients can check out a limited view of the data hosted by the server. RCS started around the early 2000s and was recognized by Git O'Sullivan (2009). Here every project contains its history and metadata. Any user can check out any part of the project without any limitations. This user action can be controlled with authentication or open for all.
+
+Paraphrasing authors Hunt and Thomas (2003), \emph{A project without version control is like a process without an undo button\ldots{}}. There are multiple uses of the version control system. The most used ones are mentioned in the following section.
+
+\hypertarget{implementation}{%
+\section{Implementation}\label{implementation}}
+
+A software version control system in the Revision Control System model offers many features that assist the developers in many functions and conveniences. Some of them are mentioned below.
+
+\hypertarget{version-history}{%
+\subsection{Version History}\label{version-history}}
+
+One of the crucial features that a Software Version Control system offers is the ability to roll back to any previous version that worked for the platform at a moment's notice. If a feature update breaks the platform, the company should be able to roll back to any previous version that worked. This minimizes the impact that the platform may suffer, keeping the capital loss to a minimum.
+
+\hypertarget{co-develop}{%
+\subsection{Co-Develop}\label{co-develop}}
+
+The source code is controlled using the company's authentication and authorization walls or open-source code hosted on a free-to-use platform. Any developer can pull the code from the source and make the changes needed to improve the functionality of the source code. This operation does not disturb the source file. It gives developers the option to work on parts of the code rather than the whole.
+
+\hypertarget{peer-review}{%
+\subsection{Peer Review}\label{peer-review}}
+
+Upon making changes for the source code, if the developer wishes the changes should be implemented for the whole platform, they can make a merge request with the changes. However, of course, this enhanced code still has to be peer-reviewed and made sure that it follows the rules maintained by the owner of the company for a smooth operation.
+
+\hypertarget{scalability}{%
+\subsection{Scalability}\label{scalability}}
+
+This process should be salable. Any number of developers can pick up the scope and start without delay.
+
+\hypertarget{commit-history}{%
+\subsection{Commit History}\label{commit-history}}
+
+Not all the changes need to be saved for the code. However, when a commit is made to save the changes, that is when it should save a version of the changes and pack it for review.
+
+\hypertarget{continuous-integration-and-continuous-development}{%
+\subsection{Continuous Integration and Continuous Development}\label{continuous-integration-and-continuous-development}}
+
+Combining all the features of a modern software version control system, it handles all the changes simultaneously. It notifies the developer when the source branch changes, making the integration quick and easy where it needs to be managing the version change history. Then, once a merge request is made, make the changes on the source version to seamlessly integrate the changes.
+\includegraphics{pipeline.png}
+
+\hypertarget{automated-testing}{%
+\subsection{Automated Testing}\label{automated-testing}}
+
+Testing can also be automated to check the essential functions of the code. This testing can be user-driven or platform-driven. This can act as the first and last stop on the changes to the main version of the code.
+
+\hypertarget{solutions}{%
+\section{Solutions}\label{solutions}}
+
+Three widely used solutions make all these features available for anyone to use. An individual or a multi-national conglomerate can use these solutions. 1. GitHub, 2. GitLab, and 3. Bitbucket. All three solutions offer similar functions. More about them Gupta (2021); Moducate (2022)
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+Version Control System is an integral part of the whole software development process. It gives a good base for the developers to work develop. They are giving a platform to spring from and a platform to fall back on.
+
+\newpage
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-gupta-2021}{}}%
+Gupta, P. (2021, March 12). \emph{Bitbucket vs github vs gitlab}. \url{https://www.educba.com/bitbucket-vs-github-vs-gitlab/}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hunt2003pragmatic}{}}%
+Hunt, A., \& Thomas, D. (2003). \emph{Pragmatic unit testing in java with JUnit}. The Pragmatic Bookshelf.
+
+\leavevmode\vadjust pre{\hypertarget{ref-moducate-2022}{}}%
+Moducate. (2022, March 25). \emph{Bitbucket vs GitHub vs GitLab \textbar{} what are the differences?} \url{https://stackshare.io/stackups/bitbucket-vs-github-vs-gitlab}
+
+\leavevmode\vadjust pre{\hypertarget{ref-10.1145ux2f1562164.1562183}{}}%
+O'Sullivan, B. (2009). Making sense of revision-control systems. \emph{Commun. ACM}, \emph{52}(9), 56--62. \url{https://doi.org/10.1145/1562164.1562183}
+
+\leavevmode\vadjust pre{\hypertarget{ref-spinellis2005version}{}}%
+Spinellis, D. (2005). Version control systems. \emph{IEEE Software}, \emph{22}(5), 108--109.
+
+\end{CSLReferences}
+
+
+\clearpage
+\renewcommand{\listfigurename}{Figure captions}
+
+
+\end{document}
