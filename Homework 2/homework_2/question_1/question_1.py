@@ -6,11 +6,11 @@ whether all the numbers are different from each other.
 Author: Rushabh Barbhaya
 """
 
-from collections import Counter
-from ast import literal_eval
-
+import collections
+import ast
 
 class QuestionOne:
+
     @staticmethod
     def is_number_check(nums: list) -> list:
         """
@@ -33,8 +33,8 @@ class QuestionOne:
             new_nums: list = []
             for num in nums:
                 try:
-                    if isinstance(literal_eval(num), (int, float)):
-                        new_nums.append(literal_eval(num))
+                    if isinstance(ast.literal_eval(num), (int, float)):
+                        new_nums.append(ast.literal_eval(num))
                 except ValueError:
                     new_nums.append(num)
             return new_nums
@@ -55,7 +55,7 @@ class QuestionOne:
         if len(nums) == len(set(nums)):
             print(f"All unique values in the list, length of list {len(nums)}")
         else:
-            dupes: dict = Counter(nums)
+            dupes: dict = collections.Counter(nums)
             dupes: set = {k for k, v in dupes.items() if v > 1}
             print(f"There are duplicate(s) in the input list {nums} -> duplicates: {dupes}")
 
